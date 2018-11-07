@@ -9,7 +9,7 @@ function level = otsu(im)
     p = zeros(1,256);
     for i = 1:m
         for j = 1:n
-            p(im(i,j)) = p(im(i,j)) + 1;
+            p(im(i,j)+1) = p(im(i,j)+1) + 1;
         end
     end
     total = m * n;
