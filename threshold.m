@@ -1,10 +1,14 @@
 function [T1, T2] = threshold(im)
-    T1 = otsu(im);
+    im = round(im*255);
+    T1 = otsu(im) - 1;
     new = im(im > T1);
-    T2 = otsu(new);
+    T2 = otsu(new) - 1;
+    T1 = double(T1);
+    T2 = double(T2);
 end
 
 function level = otsu(im)
+    im = uint8(im);
     [m, n] = size(im);
     p = zeros(1,256);
     for i = 1:m
